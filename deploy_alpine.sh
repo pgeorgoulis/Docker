@@ -36,7 +36,7 @@ services:
     networks:
       alpine_net:
     restart: unless-stopped
-    command: /bin/sh
+    command: /bin/sh -c "while true; do sleep 60; done"
     deploy:
       resources:
         limits:
@@ -62,7 +62,7 @@ cat << EOF >> $currentDirectory/docker-compose.yml
     networks:
       alpine_net:
     restart: unless-stopped
-    command: /bin/sh
+    command: /bin/sh -c "while true; do sleep 60; done"
     deploy:
       resources:
         limits:
