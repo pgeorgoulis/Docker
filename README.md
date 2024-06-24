@@ -11,8 +11,8 @@ This project involves creating and deploying multiple Alpine Linux containers us
 Docker and Docker compose must be installed to run this project. 
 The versions that where used are: 
 
-* Docker: 26.1.4,
-* Docker compose: 1.29.2,
+* Docker: 26.1.4
+* Docker compose: 1.29.2
 
 ## Setup
 
