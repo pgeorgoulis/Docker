@@ -17,8 +17,6 @@ if [ ${#SLAVE_PORTS[@]} -ne $NUM_SLAVES ]; then
     exit 1
 fi
 
-# Create temporary directory
-mkdir -p tmp
 currentDirectory=$(pwd)
 
 # Create the docker-compose file
