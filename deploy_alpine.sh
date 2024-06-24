@@ -21,7 +21,7 @@ fi
 mkdir -p tmp
 currentDirectory=$(pwd)
 
-# Create the docker-compose.yml file
+# Create the docker-compose file
 cat << EOF > $currentDirectory/docker-compose.yml
 version: "3.8"
 services:
@@ -33,6 +33,8 @@ services:
       - "80"
     ports:
       - "${MASTER_PORT}:80"
+    volumes:
+      - master_data:/data
     networks:
       alpine_net:
     restart: unless-stopped
@@ -51,6 +53,8 @@ cat << EOF >> $currentDirectory/docker-compose.yml
       - "80"
     ports:
       - "${SLAVE_PORTS[$((q-1))]}:80"
+    volumes:
+      - slave_data_$q:/data
     networks:
       alpine_net:
     restart: unless-stopped
@@ -59,12 +63,21 @@ cat << EOF >> $currentDirectory/docker-compose.yml
 EOF
 done
 
-# Add the network to docker-compose.yml
+# Add the net and volumes to docker compose
 cat << EOF >> $currentDirectory/docker-compose.yml
 networks:
   alpine_net:
     driver: bridge
+
+volumes:
+  master_data:
 EOF
+
+for q in $(seq 1 $NUM_SLAVES); do
+cat << EOF >> $currentDirectory/docker-compose.yml
+  slave_data_$q:
+EOF
+done
 
 # Run Docker Compose to deploy the containers
 docker-compose up -d
