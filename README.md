@@ -30,7 +30,7 @@ The versions that where used are:
    ```./deploy_alpine.sh <number_of_containers> <master_port> <slave_1_port> ...  <slave_n_port> ```
 5. To stop and remove the containers and the temporary files use 
    
-   ```clear.sh```
+   ```./clear.sh```
 6. To access the terminal of a slave container use: 
    
    ```docker exec -it alpine_slave_1 /bin/sh```
