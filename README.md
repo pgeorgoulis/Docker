@@ -22,9 +22,14 @@ The versions that where used are:
 2. Move into the directory
    
     ```cd Docker```
-3. Give execute rights to the script
+3. Give execute rights to the scripts
    
    ```chmod +x deploy_alpine.sh```
+
+   ```chmod +x clear.sh```
+   
+   ```chmod +x find_container_ip.sh```
+
 4. Execute the bash script giving as input the desired slave containers
    
    ```./deploy_alpine.sh <number_of_containers> <master_port> <slave_1_port> ...  <slave_n_port> ```
