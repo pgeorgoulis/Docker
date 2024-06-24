@@ -37,6 +37,12 @@ services:
       alpine_net:
     restart: unless-stopped
     command: /bin/sh
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
 
 EOF
 
@@ -57,6 +63,12 @@ cat << EOF >> $currentDirectory/docker-compose.yml
       alpine_net:
     restart: unless-stopped
     command: /bin/sh
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+        reservations:
+          memory: 256M
 
 EOF
 done
